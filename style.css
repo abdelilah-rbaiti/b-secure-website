@@ -1135,6 +1135,7 @@ body {
         display: none;
     }
 }
+
 /* ============================================
    ICON REFINEMENTS (FontAwesome)
    ============================================ */
@@ -1146,8 +1147,9 @@ body {
     margin-bottom: 15px;
     background: -webkit-linear-gradient(45deg, #333, #555);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
     transition: transform 0.3s ease;
 }
 
@@ -1155,12 +1157,14 @@ body {
 .hex-step:nth-child(odd) .info-icon i {
     background: -webkit-linear-gradient(45deg, var(--color-primary), #6aa321);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .hex-step:nth-child(even) .info-icon i {
     background: -webkit-linear-gradient(45deg, #00A3A1, #008f8d);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -1171,7 +1175,7 @@ body {
 
 /* Text Block Refinement */
 .info-text-block {
-    border-left: 3px solid transparent; 
+    border-left: 3px solid transparent;
 }
 
 .hex-step:nth-child(odd) .info-text-block {
@@ -1181,4 +1185,3 @@ body {
 .hex-step:nth-child(even) .info-text-block {
     border-left-color: #00A3A1;
 }
-
