@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 
 <body>
@@ -82,64 +82,116 @@
                 <p class="section-subtitle">Delivering comprehensive security outcomes.</p>
             </div>
 
-            <div class="services-grid">
-                <!-- Service 1: Technical Security -->
-                <div class="service-card fade-in">
-                    <div class="service-icon">🛡️</div>
-                    <h3>Technical Security</h3>
-                    <p>Proactive security assessments and hardening to fortify your infrastructure against sophisticated
-                        threats</p>
-                    <ul class="service-list">
-                        <li>Penetration Testing (Pentest) and Red Teaming</li>
-                        <li>DevSecOps, code and architecture audits</li>
-                        <li>Security hardening</li>
-                        <li>Security solution integration</li>
-                        <li>Active Directory transformation</li>
-                    </ul>
+            <!-- Hexagonal Services Flow -->
+            <div class="hex-services-container">
+                <div class="hex-flow-line"></div>
+
+                <!-- Service 1: Network Security -->
+                <div class="hex-item">
+                    <div class="hex-shape">
+                        <div class="hex-content">
+                            <span class="hex-icon">🌐</span>
+                            <h3>Network<br>Security</h3>
+                        </div>
+                    </div>
+                    <div class="hex-details hex-details-top">
+                        <p class="hex-desc">Fortify infrastructure with next-gen firewalls & SASE.</p>
+                        <ul class="hex-list">
+                            <li>Next-Gen Firewalls</li>
+                            <li>SASE & SD-WAN</li>
+                            <li>Network Integration</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <!-- Service 2: Crisis Management & Incident Response -->
-                <div class="service-card fade-in">
-                    <div class="service-icon">🚨</div>
-                    <h3>Incident Response & SOC</h3>
-                    <p>Round-the-clock monitoring and rapid response to neutralize threats before they impact your
-                        business</p>
-                    <ul class="service-list">
-                        <li>Investigation and forensic analysis</li>
-                        <li>Incident response</li>
-                        <li>Reverse engineering</li>
-                        <li>Security event management (SIEM)</li>
-                        <li>Cyber Threat Intelligence</li>
-                    </ul>
+                <!-- Service 2: Application Security -->
+                <div class="hex-item hex-down">
+                    <div class="hex-shape">
+                        <div class="hex-content">
+                            <span class="hex-icon">💻</span>
+                            <h3>App<br>Security</h3>
+                        </div>
+                    </div>
+                    <div class="hex-details hex-details-bottom">
+                        <p class="hex-desc">Secure code, APIs, and dev pipelines.</p>
+                        <ul class="hex-list">
+                            <li>DevSecOps</li>
+                            <li>Code Review</li>
+                            <li>WAF Integration</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <!-- Service 3: Governance & Risk Management -->
-                <div class="service-card fade-in">
-                    <div class="service-icon">📊</div>
-                    <h3>Governance & Compliance</h3>
-                    <p>Strategic frameworks and compliance programs that align security with business objectives</p>
-                    <ul class="service-list">
-                        <li>Organizational consulting and audits</li>
-                        <li>Risk management and business continuity</li>
-                        <li>Security master plan</li>
-                        <li>ISMS implementation</li>
-                        <li>Risk analysis and mapping</li>
-                        <li>Legal and regulatory compliance</li>
-                    </ul>
+                <!-- Service 3: Cloud Security -->
+                <div class="hex-item">
+                    <div class="hex-shape">
+                        <div class="hex-content">
+                            <span class="hex-icon">☁️</span>
+                            <h3>Cloud<br>Security</h3>
+                        </div>
+                    </div>
+                    <div class="hex-details hex-details-top">
+                        <p class="hex-desc">Visibility and control across hybrid clouds.</p>
+                        <ul class="hex-list">
+                            <li>CSPM & CWPP</li>
+                            <li>Container Security</li>
+                            <li>Migration Strategy</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <!-- Service 4: Training & Awareness -->
-                <div class="service-card fade-in">
-                    <div class="service-icon">🎓</div>
-                    <h3>Security Training</h3>
-                    <p>Build a security-first culture with comprehensive training programs for all skill levels</p>
-                    <ul class="service-list">
-                        <li>Security awareness and risk culture</li>
-                        <li>Risk management and governance training</li>
-                        <li>Offensive and defensive security training</li>
-                        <li>Digital forensics training</li>
-                        <li>Hands-on practice in our Cyber-range</li>
-                    </ul>
+                <!-- Service 4: Data Security -->
+                <div class="hex-item hex-down">
+                    <div class="hex-shape">
+                        <div class="hex-content">
+                            <span class="hex-icon">🔒</span>
+                            <h3>Data<br>Protection</h3>
+                        </div>
+                    </div>
+                    <div class="hex-details hex-details-bottom">
+                        <p class="hex-desc">Safeguard sensitive assets and compliance.</p>
+                        <ul class="hex-list">
+                            <li>DLP & Encryption</li>
+                            <li>GDPR Compliance</li>
+                            <li>Identity (IAM)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Service 5: Pentesting -->
+                <div class="hex-item">
+                    <div class="hex-shape">
+                        <div class="hex-content">
+                            <span class="hex-icon">⚔️</span>
+                            <h3>Red<br>Teaming</h3>
+                        </div>
+                    </div>
+                    <div class="hex-details hex-details-top">
+                        <p class="hex-desc">Proactive vulnerability identification.</p>
+                        <ul class="hex-list">
+                            <li>Pentesting</li>
+                            <li>Social Engineering</li>
+                            <li>Vuln. Assessment</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Service 6: MSS -->
+                <div class="hex-item hex-down">
+                    <div class="hex-shape">
+                        <div class="hex-content">
+                            <span class="hex-icon">🛡️</span>
+                            <h3>Managed<br>Security</h3>
+                        </div>
+                    </div>
+                    <div class="hex-details hex-details-bottom">
+                        <p class="hex-desc">24/7 Monitoring and Rapid Response.</p>
+                        <ul class="hex-list">
+                            <li>24/7 SOC</li>
+                            <li>MDR Services</li>
+                            <li>Threat Intel</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
