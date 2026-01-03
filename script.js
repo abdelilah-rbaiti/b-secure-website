@@ -268,3 +268,29 @@ window.addEventListener('scroll', () => {
 console.log('%c🛡️ B-SECURE', 'color: #00ff88; font-size: 24px; font-weight: bold;');
 console.log('%cYour Trusted Cybersecurity Partner', 'color: #0088ff; font-size: 14px;');
 console.log('%cWebsite secured and optimized for performance', 'color: #808080; font-size: 12px;');
+
+// =========================================
+// SCROLL ANIMATIONS (Infographic)
+// =========================================
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1 // Trigger when 10% visible
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            // Add stagger delay based on index of the element relative to its container
+            entry.target.classList.add('animate-active');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+const hexSteps = document.querySelectorAll('.hex-step');
+hexSteps.forEach((step, index) => {
+    // Add staggered delay via inline style
+    step.style.transitionDelay = \\s\;
+    observer.observe(step);
+});

@@ -886,7 +886,7 @@ body {
 
 
 /* ============================================
-   HEXAGONAL INFOGRAPHIC (Exact Replica)
+   HEXAGONAL INFOGRAPHIC (Exact Replica + Interactive)
    ============================================ */
 .hex-infographic-section {
     padding: 80px 20px;
@@ -895,7 +895,35 @@ body {
     overflow: hidden;
 }
 
-/* THE WAVE BACKGROUND */
+/* THE WAVE BACKGROUND (Animated) */
+@keyframes waveDrift {
+    0% {
+        transform: translateY(-50%) scaleY(0.5) translateX(0);
+    }
+
+    50% {
+        transform: translateY(-50%) scaleY(0.5) translateX(20px);
+    }
+
+    100% {
+        transform: translateY(-50%) scaleY(0.5) translateX(0);
+    }
+}
+
+@keyframes waveDriftReverse {
+    0% {
+        transform: translateY(-50%) scaleY(0.6) rotate(-2deg) translateX(0);
+    }
+
+    50% {
+        transform: translateY(-50%) scaleY(0.6) rotate(-2deg) translateX(-15px);
+    }
+
+    100% {
+        transform: translateY(-50%) scaleY(0.6) rotate(-2deg) translateX(0);
+    }
+}
+
 .hex-infographic-section::before {
     content: '';
     position: absolute;
@@ -911,6 +939,7 @@ body {
     z-index: 0;
     pointer-events: none;
     box-shadow: inset 0 0 100px rgba(134, 188, 37, 0.05);
+    animation: waveDrift 15s ease-in-out infinite;
 }
 
 .hex-infographic-section::after {
@@ -927,15 +956,14 @@ body {
     transform: translateY(-50%) scaleY(0.6) rotate(-2deg);
     z-index: 0;
     pointer-events: none;
+    animation: waveDriftReverse 20s ease-in-out infinite;
 }
 
 .hex-infographic-container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    /* Align to top to handle varying heights */
     max-width: 1600px;
-    /* Wider to fit 8 steps */
     margin: 0 auto;
     gap: 0;
     position: relative;
@@ -944,29 +972,37 @@ body {
     z-index: 2;
 }
 
-/* Individual Step Wrapper */
+/* Individual Step Wrapper (Initial State for Scroll Animation) */
 .hex-step {
     flex: 1;
     min-width: 180px;
-    /* Narrower to fit 8 */
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
     padding: 0 5px;
+    opacity: 0;
+    /* Hidden initially */
+    transform: translateY(30px);
+    /* Pushed down */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-/* CONNECTOR ARROWS (Triangle/Chevron) */
-/* This simulates the small arrows between hexagons in the reference */
+.hex-step.animate-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* CONNECTOR ARROWS */
 .hex-step::after {
     content: '▶';
     font-size: 12px;
     color: #86BC25;
     position: absolute;
     top: 100px;
-    /* Align with Hexagon center roughly */
     right: -8px;
     z-index: 3;
+    transition: transform 0.3s ease;
 }
 
 .hex-step:last-child::after {
@@ -978,35 +1014,28 @@ body {
     top: 220px;
 }
 
-/* Adjust for bottom hexes */
+.hex-step:hover::after {
+    transform: translateX(3px);
+    /* Nudge arrow on hover */
+}
 
-
-/* 
-   Zig-Zag Layout Logic 
-   Odd = Top
-   Even = Bottom
-*/
-
+/* Layout Logic */
 .hex-step:nth-child(odd) {
     flex-direction: column;
-    /* Hex then Text */
     margin-top: 0;
 }
 
 .hex-step:nth-child(even) {
     flex-direction: column-reverse;
-    /* Text then Hex */
     margin-top: 120px;
-    /* Push down to create zig-zag */
 }
 
 
-/* THE HEXAGON (Wireframe Style) */
+/* THE HEXAGON (Interactive Wireframe) */
 .infographic-hex {
     width: 130px;
     height: 150px;
     background: #ffffff;
-    /* Pure White Fill */
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     display: flex;
     justify-content: center;
@@ -1014,34 +1043,29 @@ body {
     position: relative;
     z-index: 2;
     margin-bottom: 20px;
-    /* Spacing for odd */
     margin-top: 20px;
-    /* Spacing for even */
-
-    /* Simulate Border with Box Shadow or Pseudo (Clip-path plays hard with borders) */
-    /* Using a pseudo-element for the colored border */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .infographic-hex::before {
     content: '';
     position: absolute;
     inset: 2px;
-    /* Thickness of border */
     background: #fff;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     z-index: -1;
+    transition: background-color 0.3s ease;
+    /* Transition for border glow effect */
 }
 
-/* Coloring the "Border" (Background of parent) */
 .hex-step:nth-child(odd) .infographic-hex {
     background-color: #86BC25;
-    /* Deloitte Green */
 }
 
 .hex-step:nth-child(even) .infographic-hex {
     background-color: #00A3A1;
-    /* Teal */
 }
+
 
 /* Inner Content */
 .hex-inner {
@@ -1054,8 +1078,23 @@ body {
     height: 100%;
     background: #fff;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    /* Make inner slightly smaller to show "Border" */
     transform: scale(0.96);
+}
+
+
+/* HOVER EFFECTS: Hexagon Zoom & Highlight */
+.hex-step:hover .infographic-hex {
+    transform: scale(1.1);
+}
+
+.hex-step:nth-child(odd):hover .infographic-hex {
+    background-color: #6aa321;
+    /* Darker Green border on hover */
+}
+
+.hex-step:nth-child(even):hover .infographic-hex {
+    background-color: #007a78;
+    /* Darker Teal border on hover */
 }
 
 
@@ -1064,7 +1103,7 @@ body {
     font-size: 2rem;
     margin-bottom: 8px;
     color: #333;
-    /* Dark Grey Icon */
+    transition: transform 0.4s ease, color 0.3s ease;
 }
 
 .hex-step:nth-child(odd) .info-icon i {
@@ -1073,6 +1112,12 @@ body {
 
 .hex-step:nth-child(even) .info-icon i {
     color: #007a78;
+}
+
+.hex-step:hover .info-icon i {
+    transform: rotateY(180deg);
+    /* Icon flipping effect */
+    color: #1a1a1a;
 }
 
 .info-title {
@@ -1084,15 +1129,23 @@ body {
     max-width: 90px;
 }
 
-/* TEXT CONTENT (Clean, No Box) */
+/* TEXT CONTENT */
 .info-text-block {
     text-align: left;
-    padding: 0 10px;
+    padding: 10px;
     background: transparent;
     box-shadow: none;
     border: none;
     max-width: 200px;
     color: #000;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover: Subtle highlight on text block */
+.hex-step:hover .info-text-block {
+    background-color: rgba(0, 0, 0, 0.02);
+    /* Very subtle grey background */
 }
 
 .info-desc {
@@ -1118,7 +1171,6 @@ body {
     line-height: 1.3;
 }
 
-/* Bullet Points */
 .info-list li::before {
     content: '•';
     color: #86BC25;
@@ -1133,7 +1185,7 @@ body {
 }
 
 
-/* Removing Extra Elements from previous designs */
+/* Removing Extra Elements */
 .info-text-block::before {
     display: none;
 }
@@ -1154,12 +1206,15 @@ body {
 
     .hex-step {
         flex: 0 0 45%;
-        /* Two columns */
         margin-top: 0 !important;
         flex-direction: row !important;
-        /* Side by side on mobile */
         align-items: flex-start;
         text-align: left;
+
+        /* Reset animations for mobile to avoid jank */
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
     }
 
     .hex-step:nth-child(even) {
@@ -1176,13 +1231,10 @@ body {
     .hex-step::after {
         display: none;
     }
-
-    /* Hide arrows */
 }
 
 @media (max-width: 600px) {
     .hex-step {
         flex: 0 0 100%;
-        /* Single column */
     }
 }
