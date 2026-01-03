@@ -1048,107 +1048,90 @@ body {
 /* Hide Title inside Hex */
 
 
-/* REVEAL DETAILS SECTION (Popup) */
+/* REVEAL DETAILS SECTION (Popup/Expand) */
 .info-text-block {
     position: absolute;
     width: 250px;
-    padding: 20px;
+    padding: 15px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     text-align: center;
     z-index: 10;
     pointer-events: none;
-    /* Let clicks pass initially */
 
-    /* Hiding State */
+    /* Reveal State - Hiding only list/extra info? 
+       Actually user said "more details appear". 
+       Let's keep the title visible, hide the rest. */
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-20px) scale(0.95);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
 }
 
-/* Positioning Details */
-.hex-step:nth-child(odd) .info-text-block {
-    top: 180px;
-    /* Below */
+/* Let's refine: Title + Hex visible. Popup shows details. */
+.info-title {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 10px 0;
+    transition: color 0.3s ease;
 }
 
-.hex-step:nth-child(even) .info-text-block {
-    bottom: 180px;
-    /* Above */
+.hex-step:nth-child(odd) .info-title {
+    order: -1;
+    margin-bottom: 20px;
+    color: #86BC25;
 }
 
-/* HOVER REVEAL LOGIC */
+.hex-step:nth-child(even) .info-title {
+    order: 1;
+    margin-top: 20px;
+    color: #00A3A1;
+}
+
+/* Popup specifically for the list */
 .hex-step:hover .info-text-block {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
     pointer-events: auto;
 }
 
 .hex-step:hover .infographic-hex {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
-/* Typography */
+/* Typography in Text Block */
 .info-desc {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #333;
-    margin-bottom: 8px;
-    font-weight: 600;
-}
-
-.info-list {
-    text-align: left;
-    padding-left: 10px;
+    margin-bottom: 10px;
 }
 
 .info-list li {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: #666;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
+    text-align: left;
 }
 
 .info-list li::before {
     content: '• ';
-    color: #86BC25;
 }
-
-.hex-step:nth-child(even) .info-list li::before {
-    color: #00A3A1;
-}
-
 
 /* RESPONSIVE */
 @media (max-width: 1100px) {
     .hex-infographic-container {
         flex-direction: column;
-        gap: 20px;
+        gap: 40px;
         align-items: center;
     }
 
     .hex-step {
-        flex-direction: row;
-        width: 100%;
-        max-width: 500px;
+        flex-direction: column !important;
         margin: 0 !important;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 10px;
-        /* Show details by default on mobile */
-    }
-
-    .infographic-hex {
-        margin: 0 20px 0 0;
-        width: 100px;
-        height: 115px;
-        flex-shrink: 0;
-    }
-
-    .hex-step::before,
-    .hex-step::after {
-        display: none;
     }
 
     .info-text-block {
@@ -1156,10 +1139,7 @@ body {
         opacity: 1;
         visibility: visible;
         transform: none;
-        width: auto;
         box-shadow: none;
-        padding: 0;
-        text-align: left;
         pointer-events: auto;
     }
 }
