@@ -886,323 +886,303 @@ body {
 
 
 /* ============================================
-   HEXAGONAL INFOGRAPHIC (Ultra-Premium)
+   HEXAGONAL INFOGRAPHIC (Exact Replica)
    ============================================ */
 .hex-infographic-section {
-    padding: 120px 20px;
-    background-color: #f8f9fa;
-    background-image: 
-        radial-gradient(#e5e7eb 1px, transparent 1px),
-        radial-gradient(#e5e7eb 1px, transparent 1px);
-    background-size: 20px 20px;
-    background-position: 0 0, 10px 10px;
-    overflow-x: auto;
+    padding: 80px 20px;
+    background-color: #ffffff;
     position: relative;
+    overflow: hidden;
 }
 
-/* Vignette Effect */
+/* THE WAVE BACKGROUND */
 .hex-infographic-section::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, transparent 0%, #f8f9fa 90%);
+    top: 50%;
+    left: -10%;
+    width: 120%;
+    height: 600px;
+    background: transparent;
+    border-top: 2px solid rgba(134, 188, 37, 0.2);
+    border-bottom: 2px solid rgba(0, 163, 161, 0.2);
+    border-radius: 50%;
+    transform: translateY(-50%) scaleY(0.5);
+    z-index: 0;
     pointer-events: none;
-    z-index: 1;
+    box-shadow: inset 0 0 100px rgba(134, 188, 37, 0.05);
+}
+
+.hex-infographic-section::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -10%;
+    width: 120%;
+    height: 550px;
+    background: transparent;
+    border-top: 1px solid rgba(134, 188, 37, 0.4);
+    border-bottom: 1px solid rgba(0, 163, 161, 0.4);
+    border-radius: 45%;
+    transform: translateY(-50%) scaleY(0.6) rotate(-2deg);
+    z-index: 0;
+    pointer-events: none;
 }
 
 .hex-infographic-container {
     display: flex;
     justify-content: center;
-    align-items: stretch;
-    max-width: 1400px;
+    align-items: flex-start;
+    /* Align to top to handle varying heights */
+    max-width: 1600px;
+    /* Wider to fit 8 steps */
     margin: 0 auto;
     gap: 0;
     position: relative;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 60px;
+    padding-bottom: 60px;
     z-index: 2;
 }
 
-/* Step Wrapper */
+/* Individual Step Wrapper */
 .hex-step {
     flex: 1;
-    min-width: 240px;
-    display: grid;
-    grid-template-rows: 1fr auto 1fr;
+    min-width: 180px;
+    /* Narrower to fit 8 */
+    display: flex;
+    flex-direction: column;
     align-items: center;
     position: relative;
-    padding: 0 15px;
+    padding: 0 5px;
 }
 
-/* ANIMATED FLOW LINE */
-@keyframes flowPulse {
-    0% { background-position: 0 0; }
-    100% { background-position: 40px 0; }
-}
-
+/* CONNECTOR ARROWS (Triangle/Chevron) */
+/* This simulates the small arrows between hexagons in the reference */
 .hex-step::after {
-    content: '';
+    content: '▶';
+    font-size: 12px;
+    color: #86BC25;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 3px;
-    /* Animated Gradient Line */
-    background: linear-gradient(90deg, 
-        rgba(204,204,204,0.3) 0%, 
-        rgba(204,204,204,0.3) 50%, 
-        rgba(134, 188, 37, 0.8) 50%, 
-        rgba(134, 188, 37, 0.8) 60%, 
-        rgba(204,204,204,0.3) 60%, 
-        rgba(204,204,204,0.3) 100%
-    );
-    background-size: 40px 100%;
-    animation: flowPulse 2s linear infinite;
-    z-index: 0;
-    transform: translateY(-50%);
+    top: 100px;
+    /* Align with Hexagon center roughly */
+    right: -8px;
+    z-index: 3;
 }
 
 .hex-step:last-child::after {
     display: none;
 }
 
-/* 3D HEXAGON SHAPE */
+.hex-step:nth-child(even)::after {
+    color: #00A3A1;
+    top: 220px;
+}
+
+/* Adjust for bottom hexes */
+
+
+/* 
+   Zig-Zag Layout Logic 
+   Odd = Top
+   Even = Bottom
+*/
+
+.hex-step:nth-child(odd) {
+    flex-direction: column;
+    /* Hex then Text */
+    margin-top: 0;
+}
+
+.hex-step:nth-child(even) {
+    flex-direction: column-reverse;
+    /* Text then Hex */
+    margin-top: 120px;
+    /* Push down to create zig-zag */
+}
+
+
+/* THE HEXAGON (Wireframe Style) */
 .infographic-hex {
-    grid-row: 2;
-    width: 160px;
-    height: 180px;
-    /* Glass Effect Base */
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    
+    width: 130px;
+    height: 150px;
+    background: #ffffff;
+    /* Pure White Fill */
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
-    z-index: 2;
     position: relative;
-    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    
-    /* 3D Shadow Simulation */
-    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.1));
+    z-index: 2;
+    margin-bottom: 20px;
+    /* Spacing for odd */
+    margin-top: 20px;
+    /* Spacing for even */
+
+    /* Simulate Border with Box Shadow or Pseudo (Clip-path plays hard with borders) */
+    /* Using a pseudo-element for the colored border */
 }
 
-.infographic-hex:hover {
-    transform: scale(1.1) translateY(-10px);
-    filter: drop-shadow(0 25px 40px rgba(134, 188, 37, 0.25));
-}
-
-/* Inner Hex (Beveled Look) */
-.hex-inner {
-    width: 154px;
-    height: 174px;
-    background: linear-gradient(135deg, #ffffff 0%, #f0f2f5 100%);
+.infographic-hex::before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    /* Thickness of border */
+    background: #fff;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    z-index: -1;
+}
+
+/* Coloring the "Border" (Background of parent) */
+.hex-step:nth-child(odd) .infographic-hex {
+    background-color: #86BC25;
+    /* Deloitte Green */
+}
+
+.hex-step:nth-child(even) .infographic-hex {
+    background-color: #00A3A1;
+    /* Teal */
+}
+
+/* Inner Content */
+.hex-inner {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-    z-index: 2;
-    /* Inner Glow for Depth */
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.02);
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    /* Make inner slightly smaller to show "Border" */
+    transform: scale(0.96);
 }
 
-/* Color Accents (Pseudo Border) */
-.hex-step:nth-child(odd) .infographic-hex {
-    background: linear-gradient(135deg, #86BC25, #6aa321); /* Green Gradient Border */
-}
 
-.hex-step:nth-child(even) .infographic-hex {
-    background: linear-gradient(135deg, #00A3A1, #008f8d); /* Teal Gradient Border */
-}
-
-/* ICONS with Glossy Finish */
+/* ICONS */
 .info-icon i {
-    font-size: 2.8rem;
-    margin-bottom: 12px;
-    
-    /* Radiant Gradient */
-    background: -webkit-linear-gradient(120deg, #2b3a42, #4a5c66);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
-    transition: transform 0.4s ease;
+    font-size: 2rem;
+    margin-bottom: 8px;
+    color: #333;
+    /* Dark Grey Icon */
 }
 
-/* Active Color States */
 .hex-step:nth-child(odd) .info-icon i {
-    background: -webkit-linear-gradient(120deg, #86BC25, #4e7a0b);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #5c8a14;
 }
 
 .hex-step:nth-child(even) .info-icon i {
-    background: -webkit-linear-gradient(120deg, #00A3A1, #005f5e);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.hex-step:hover .info-icon i {
-    transform: scale(1.15) rotate(5deg);
+    color: #007a78;
 }
 
 .info-title {
-    font-size: 0.85rem;
-    font-weight: 800;
-    color: #1a1a1a;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 0 10px;
-    margin-top: 5px;
-}
-
-/* FLOATING GLASS CARDS */
-.info-text-block {
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(5px);
-    border-radius: 12px;
-    
-    /* Soft Elevation */
-    box-shadow: 
-        0 10px 30px -5px rgba(0,0,0,0.05),
-        0 4px 6px -2px rgba(0,0,0,0.01);
-        
-    border: 1px solid rgba(255,255,255,0.8);
-    position: relative;
-    transition: all 0.4s ease;
-    border-left: 4px solid transparent; 
-}
-
-.hex-step:hover .info-text-block {
-    transform: translateY(-5px);
-    box-shadow: 
-        0 20px 40px -5px rgba(0,0,0,0.1),
-        0 8px 10px -2px rgba(0,0,0,0.02);
-    background: #fff;
-}
-
-.hex-step:nth-child(odd) .info-text-block {
-    grid-row: 1;
-    margin-bottom: 40px;
-    border-left-color: var(--color-primary);
-}
-
-.hex-step:nth-child(even) .info-text-block {
-    grid-row: 3;
-    margin-top: 40px;
-    border-left-color: #00A3A1;
-}
-
-/* Vertical Connector (Animated Path) */
-.info-text-block::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    width: 2px;
-    height: 40px; 
-    /* Dotted Line with Flow */
-    background: linear-gradient(180deg, 
-        #ccc 50%, 
-        rgba(255,255,255,0) 50%
-    );
-    background-size: 2px 10px;
-    z-index: -1;
-}
-
-.hex-step:nth-child(odd) .info-text-block::before {
-    bottom: -40px;
-}
-
-.hex-step:nth-child(even) .info-text-block::before {
-    top: -40px;
-}
-
-/* Typography */
-.info-desc {
+    font-size: 0.75rem;
     font-weight: 700;
-    color: #1f2937;
-    font-size: 1rem;
-    margin-bottom: 15px;
+    color: #000;
+    text-transform: capitalize;
+    line-height: 1.2;
+    max-width: 90px;
+}
+
+/* TEXT CONTENT (Clean, No Box) */
+.info-text-block {
+    text-align: left;
+    padding: 0 10px;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    max-width: 200px;
+    color: #000;
+}
+
+.info-desc {
+    font-size: 0.85rem;
+    color: #222;
+    margin-bottom: 10px;
     line-height: 1.4;
+    font-weight: 500;
 }
 
 .info-list {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .info-list li {
-    font-size: 0.9rem;
-    color: #4b5563;
-    margin-bottom: 10px;
-    padding-left: 18px;
+    font-size: 0.75rem;
+    color: #555;
+    margin-bottom: 4px;
+    padding-left: 10px;
     position: relative;
-    line-height: 1.5;
+    line-height: 1.3;
 }
 
-/* Custom Check Icons for List */
+/* Bullet Points */
 .info-list li::before {
-    content: '';
-    font-weight: 900;
-    font-size: 0.8rem;
-    color: var(--color-primary);
+    content: '•';
+    color: #86BC25;
     position: absolute;
     left: 0;
-    top: 1px;
+    top: 0px;
+    font-weight: bold;
 }
 
 .hex-step:nth-child(even) .info-list li::before {
     color: #00A3A1;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
+
+/* Removing Extra Elements from previous designs */
+.info-text-block::before {
+    display: none;
+}
+
+.hex-step::before {
+    display: none;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
     .hex-infographic-container {
-        flex-direction: column;
-        align-items: stretch;
-        padding-left: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-top: 20px;
+        gap: 30px;
     }
 
     .hex-step {
-        display: flex;
-        width: 100%;
-        margin-bottom: 60px;
-        padding: 0;
+        flex: 0 0 45%;
+        /* Two columns */
+        margin-top: 0 !important;
+        flex-direction: row !important;
+        /* Side by side on mobile */
+        align-items: flex-start;
+        text-align: left;
     }
 
-    /* Vertical Timeline Line */
-    .hex-infographic-container::before {
-        content: '';
-        position: absolute;
-        top: 50px;
-        bottom: 50px;
-        left: 100px; 
-        width: 4px;
-        background: #e5e7eb;
-        z-index: 0;
+    .hex-step:nth-child(even) {
+        flex-direction: row !important;
     }
-
-    .hex-step::after { display: none; }
 
     .infographic-hex {
+        margin: 0 15px 0 0;
         flex-shrink: 0;
-        margin: 0 40px 0 0;
+        width: 100px;
+        height: 115px;
     }
 
-    .info-text-block {
-        flex-grow: 1;
-        text-align: left;
-        margin: 0 !important;
-        padding: 25px;
-    }
-
-    .info-text-block::before {
+    .hex-step::after {
         display: none;
     }
+
+    /* Hide arrows */
 }
 
+@media (max-width: 600px) {
+    .hex-step {
+        flex: 0 0 100%;
+        /* Single column */
+    }
+}
