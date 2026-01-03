@@ -1211,10 +1211,10 @@ body {
         align-items: flex-start;
         text-align: left;
 
-        /* Reset animations for mobile to avoid jank */
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
+        /* Reset animations for mobile to avoid jank - REMOVED to allow animation */
+        /* opacity: 1 !important; */
+        /* transform: none !important; */
+        /* transition: none !important; */
     }
 
     .hex-step:nth-child(even) {
