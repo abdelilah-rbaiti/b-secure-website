@@ -291,6 +291,6 @@ const observer = new IntersectionObserver((entries, observer) => {
 const hexSteps = document.querySelectorAll('.hex-step');
 hexSteps.forEach((step, index) => {
     // Add staggered delay via inline style
-    step.style.transitionDelay = \\s\;
+    step.style.transitionDelay = `${index * 0.15}s`;
     observer.observe(step);
 });
