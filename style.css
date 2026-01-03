@@ -312,11 +312,21 @@ body {
     font-size: 1.5rem;
     margin-bottom: 15px;
     color: var(--color-black);
+    font-weight: 700;
+}
+
+.service-desc {
+    color: var(--color-text-secondary);
+    margin-bottom: 20px;
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 .service-list {
     list-style: none;
-    margin-top: 20px;
+    margin-top: auto;
+    margin-bottom: 25px;
+    flex-grow: 1;
 }
 
 .service-list li {
@@ -324,6 +334,7 @@ body {
     color: var(--color-text-secondary);
     padding-left: 20px;
     position: relative;
+    font-size: 0.95rem;
 }
 
 .service-list li::before {
@@ -332,6 +343,27 @@ body {
     position: absolute;
     left: 0;
     font-weight: bold;
+}
+
+/* Learn More Link */
+.service-link {
+    text-decoration: none;
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.3s ease;
+}
+
+.service-link:hover {
+    gap: 12px;
+    color: var(--color-primary-dark);
+}
+
+.arrow {
+    transition: transform 0.3s ease;
 }
 
 /* ============================================
