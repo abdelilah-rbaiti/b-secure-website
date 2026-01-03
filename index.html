@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="B-Secure - Your trusted partner in cybersecurity. Expert services in technical security, incident response, governance, and training.">
+    <meta name="keywords"
+        content="cybersecurity, penetration testing, incident response, security governance, SOC, SIEM">
+    <title>B-Secure | Cybersecurity Excellence</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="B-Secure Logo" class="logo-icon" id="logo-icon">
+                <span>B-SECURE</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle menu">
+                ☰
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <canvas id="threat-map" class="threat-canvas"></canvas>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">🛡️ Trusted by 100+ Organizations Worldwide</div>
+            <h1>Secure Your Digital Future</h1>
+            <p class="hero-tagline">Enterprise-grade cybersecurity solutions designed to protect, detect, and respond to
+                evolving threats in real-time</p>
+            <div class="hero-cta">
+                <a href="#services" class="btn btn-primary">Explore Our Services</a>
+                <a href="#contact" class="btn btn-outline">Get in Touch</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="stat-value">99.9%</span>
+                    <span class="stat-text">Uptime</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-value">&lt;5min</span>
+                    <span class="stat-text">Response Time</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-value">24/7</span>
+                    <span class="stat-text">Monitoring</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Comprehensive Security Services</h2>
+                <p class="section-subtitle">End-to-end cybersecurity solutions powered by industry-leading expertise and
+                    cutting-edge technology</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service 1: Technical Security -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Technical Security</h3>
+                    <p>Proactive security assessments and hardening to fortify your infrastructure against sophisticated
+                        threats</p>
+                    <ul class="service-list">
+                        <li>Penetration Testing (Pentest) and Red Teaming</li>
+                        <li>DevSecOps, code and architecture audits</li>
+                        <li>Security hardening</li>
+                        <li>Security solution integration</li>
+                        <li>Active Directory transformation</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2: Crisis Management & Incident Response -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">🚨</div>
+                    <h3>Incident Response & SOC</h3>
+                    <p>Round-the-clock monitoring and rapid response to neutralize threats before they impact your
+                        business</p>
+                    <ul class="service-list">
+                        <li>Investigation and forensic analysis</li>
+                        <li>Incident response</li>
+                        <li>Reverse engineering</li>
+                        <li>Security event management (SIEM)</li>
+                        <li>Cyber Threat Intelligence</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3: Governance & Risk Management -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">📊</div>
+                    <h3>Governance & Compliance</h3>
+                    <p>Strategic frameworks and compliance programs that align security with business objectives</p>
+                    <ul class="service-list">
+                        <li>Organizational consulting and audits</li>
+                        <li>Risk management and business continuity</li>
+                        <li>Security master plan</li>
+                        <li>ISMS implementation</li>
+                        <li>Risk analysis and mapping</li>
+                        <li>Legal and regulatory compliance</li>
+                    </ul>
+                </div>
+
+                <!-- Service 4: Training & Awareness -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">🎓</div>
+                    <h3>Security Training</h3>
+                    <p>Build a security-first culture with comprehensive training programs for all skill levels</p>
+                    <ul class="service-list">
+                        <li>Security awareness and risk culture</li>
+                        <li>Risk management and governance training</li>
+                        <li>Offensive and defensive security training</li>
+                        <li>Digital forensics training</li>
+                        <li>Hands-on practice in our Cyber-range</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust & Certifications Section -->
+    <section class="trust-section section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Trusted & Certified</h2>
+                <p class="section-subtitle">Industry-leading certifications and compliance standards</p>
+            </div>
+            <div class="certifications-grid">
+                <div class="cert-badge">
+                    <div class="cert-icon">🔒</div>
+                    <div class="cert-name">ISO 27001</div>
+                    <div class="cert-desc">Information Security</div>
+                </div>
+                <div class="cert-badge">
+                    <div class="cert-icon">✓</div>
+                    <div class="cert-name">SOC 2 Type II</div>
+                    <div class="cert-desc">Security & Compliance</div>
+                </div>
+                <div class="cert-badge">
+                    <div class="cert-icon">🛡️</div>
+                    <div class="cert-name">GDPR</div>
+                    <div class="cert-desc">Data Protection</div>
+                </div>
+                <div class="cert-badge">
+                    <div class="cert-icon">⚡</div>
+                    <div class="cert-name">PCI DSS</div>
+                    <div class="cert-desc">Payment Security</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Why Choose B-Secure?</h2>
+                    <p>
+                        B-Secure delivers enterprise-grade cybersecurity with a proven track record of protecting
+                        critical infrastructure and sensitive data. Our certified experts combine technical excellence
+                        with strategic insight to safeguard your organization.
+                    </p>
+                    <p>
+                        We go beyond vulnerability detection—we architect resilient
+                        security ecosystems that adapt to evolving threats. Partner with us for comprehensive
+                        protection across all attack vectors.
+                    </p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Security Assessments</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">SOC Monitoring</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">Clients Protected</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2>Let's Strengthen Your Security Posture</h2>
+                <p>
+                    Connect with our cybersecurity experts to discuss your unique challenges.
+                    We'll design a comprehensive security strategy tailored to your organization's needs.
+                </p>
+                <a href="mailto:contact@b-secure.com" class="btn btn-primary">Contact Us Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 B-Secure. All rights reserved. | Your trusted cybersecurity partner</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>
