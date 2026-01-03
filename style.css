@@ -501,3 +501,238 @@ body {
         grid-template-columns: 1fr;
     }
 }
+/* ============================================
+   HEXAGONAL SERVICES FLOW (OVERRIDE)
+   ============================================ */
+.services {
+    background-color: var(--color-white);
+    overflow-x: hidden;
+}
+
+.hex-services-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 60px 20px;
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+/* The visual connector line */
+.hex-flow-line {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, var(--color-primary), var(--color-primary) 10px, transparent 10px, transparent 20px);
+    z-index: 0;
+    transform: translateY(-50%);
+    opacity: 0.3;
+}
+
+.hex-item {
+    position: relative;
+    width: 200px;
+    height: 300px; /* Space for top/bottom text */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    margin: 0 10px;
+}
+
+/* Stagger every other item down */
+.hex-item.hex-down {
+    margin-top: 100px; 
+}
+
+/* The Hexagon Shape */
+.hex-shape {
+    width: 160px;
+    height: 180px;
+    background-color: var(--color-white);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--color-primary); /* Fallback border */
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+}
+
+/* Effect */
+.hex-shape::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-primary);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    z-index: -1;
+    transform: scale(1.03); 
+    opacity: 0.2;
+    transition: opacity 0.3s;
+}
+
+.hex-shape:hover {
+    transform: scale(1.1);
+    background-color: var(--color-primary);
+}
+
+.hex-shape:hover::before {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.hex-shape:hover .hex-content {
+    color: var(--color-white);
+}
+
+.hex-shape:hover .hex-icon {
+    transform: scale(1.2);
+}
+
+.hex-content {
+    text-align: center;
+    z-index: 2;
+    color: var(--color-black);
+    transition: color 0.3s;
+    padding: 10px;
+}
+
+.hex-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 10px;
+    transition: transform 0.3s;
+}
+
+.hex-content h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Details */
+.hex-details {
+    position: absolute;
+    width: 250px;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.4s ease;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.hex-details-top {
+    bottom: 60%; 
+    transform: translateY(-10px);
+}
+
+.hex-details-bottom {
+    top: 60%; 
+    transform: translateY(10px);
+}
+
+.hex-item:hover .hex-details {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.hex-desc {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-black);
+}
+
+.hex-list {
+    list-style: none;
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    text-align: left;
+    display: inline-block;
+}
+
+.hex-list li {
+    margin-bottom: 4px;
+}
+
+/* Arrows */
+.hex-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    opacity: 0.5;
+}
+
+.hex-item.hex-down:not(:last-child)::after {
+    top: 15%; 
+    transform: rotate(-30deg);
+}
+
+.hex-item:not(.hex-down):not(:last-child)::after {
+    top: 85%;
+    transform: rotate(30deg);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .hex-services-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .hex-flow-line { display: none; }
+    .hex-item {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 20px;
+        margin: 0;
+        align-items: center;
+    }
+    .hex-item.hex-down { margin-top: 0; }
+    .hex-shape {
+        width: 80px;
+        height: 90px;
+        flex-shrink: 0;
+    }
+    .hex-icon { font-size: 1.5rem; margin-bottom: 5px; }
+    .hex-content h3 { font-size: 0.7rem; }
+    .hex-details {
+        position: static;
+        opacity: 1;
+        width: auto;
+        transform: none;
+        text-align: left;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        pointer-events: auto;
+    }
+    .hex-item::after { display: none; }
+}
+
