@@ -886,7 +886,7 @@ body {
 
 
 /* ============================================
-   HEXAGONAL INFOGRAPHIC (Exact Replica + Interactive)
+   HEXAGONAL INFOGRAPHIC (Clean Reveal)
    ============================================ */
 .hex-infographic-section {
     padding: 80px 20px;
@@ -895,144 +895,93 @@ body {
     overflow: hidden;
 }
 
-/* THE WAVE BACKGROUND (Animated) */
-@keyframes waveDrift {
-    0% {
-        transform: translateY(-50%) scaleY(0.5) translateX(0);
-    }
-
-    50% {
-        transform: translateY(-50%) scaleY(0.5) translateX(20px);
-    }
-
-    100% {
-        transform: translateY(-50%) scaleY(0.5) translateX(0);
-    }
-}
-
-@keyframes waveDriftReverse {
-    0% {
-        transform: translateY(-50%) scaleY(0.6) rotate(-2deg) translateX(0);
-    }
-
-    50% {
-        transform: translateY(-50%) scaleY(0.6) rotate(-2deg) translateX(-15px);
-    }
-
-    100% {
-        transform: translateY(-50%) scaleY(0.6) rotate(-2deg) translateX(0);
-    }
-}
-
-.hex-infographic-section::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -10%;
-    width: 120%;
-    height: 600px;
-    background: transparent;
-    border-top: 2px solid rgba(134, 188, 37, 0.2);
-    border-bottom: 2px solid rgba(0, 163, 161, 0.2);
-    border-radius: 50%;
-    transform: translateY(-50%) scaleY(0.5);
-    z-index: 0;
-    pointer-events: none;
-    box-shadow: inset 0 0 100px rgba(134, 188, 37, 0.05);
-    animation: waveDrift 15s ease-in-out infinite;
-}
-
+/* Remove old Wave Backgrounds */
+.hex-infographic-section::before,
 .hex-infographic-section::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -10%;
-    width: 120%;
-    height: 550px;
-    background: transparent;
-    border-top: 1px solid rgba(134, 188, 37, 0.4);
-    border-bottom: 1px solid rgba(0, 163, 161, 0.4);
-    border-radius: 45%;
-    transform: translateY(-50%) scaleY(0.6) rotate(-2deg);
-    z-index: 0;
-    pointer-events: none;
-    animation: waveDriftReverse 20s ease-in-out infinite;
+    display: none;
 }
 
 .hex-infographic-container {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    /* Center horizontally */
     max-width: 1600px;
     margin: 0 auto;
-    gap: 0;
     position: relative;
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding: 40px 0;
     z-index: 2;
 }
 
-/* Individual Step Wrapper (Initial State for Scroll Animation) */
+/* STEP WRAPPER */
 .hex-step {
     flex: 1;
-    min-width: 180px;
+    min-width: 160px;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-    padding: 0 5px;
-    /* opacity: 0; REMOVED to prevent blank screen if JS fails */
-    /* transform: translateY(30px); Pushed down */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition: all 0.3s ease;
 }
 
-.hex-step.animate-active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* CONNECTOR ARROWS */
-.hex-step::after {
-    content: '▶';
-    font-size: 12px;
-    color: #86BC25;
+/* CONNECTOR LINES (Grey Line + Dots) */
+.hex-step::before {
+    content: '';
     position: absolute;
-    top: 100px;
-    right: -8px;
-    z-index: 3;
-    transition: transform 0.3s ease;
+    top: 75px;
+    /* Middle of Hexagon */
+    left: 50%;
+    /* Start from center */
+    width: 100%;
+    /* Stretch to next */
+    height: 2px;
+    background-color: #e0e0e0;
+    z-index: 0;
+    transform: translateY(-50%);
+    display: block;
+}
+
+.hex-step:last-child::before {
+    display: none;
+}
+
+/* The Dot */
+.hex-step::after {
+    content: '';
+    position: absolute;
+    right: -5px;
+    /* Between steps */
+    top: 75px;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    z-index: 1;
+    transform: translateY(-50%);
 }
 
 .hex-step:last-child::after {
     display: none;
 }
 
-.hex-step:nth-child(even)::after {
-    color: #00A3A1;
-    top: 220px;
-}
 
-.hex-step:hover::after {
-    transform: translateX(3px);
-    /* Nudge arrow on hover */
-}
-
-/* Layout Logic */
+/* ZIG-ZAG LAYOUT OFFSETS */
 .hex-step:nth-child(odd) {
-    flex-direction: column;
-    margin-top: 0;
+    margin-top: -80px;
+    /* Shift Up */
 }
 
 .hex-step:nth-child(even) {
-    flex-direction: column-reverse;
-    margin-top: 120px;
+    margin-top: 80px;
+    /* Shift Down */
 }
 
 
-/* THE HEXAGON (Interactive Wireframe) */
+/* THE HEXAGON (Clean White Card) */
 .infographic-hex {
-    width: 130px;
-    height: 150px;
+    width: 150px;
+    height: 170px;
     background: #ffffff;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     display: flex;
@@ -1040,22 +989,22 @@ body {
     align-items: center;
     position: relative;
     z-index: 2;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+    /* Card Shadow */
 }
 
+/* The Wired Border */
 .infographic-hex::before {
     content: '';
     position: absolute;
-    inset: 2px;
+    inset: 3px;
     background: #fff;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     z-index: -1;
-    transition: background-color 0.3s ease;
-    /* Transition for border glow effect */
 }
 
+/* Colors */
 .hex-step:nth-child(odd) .infographic-hex {
     background-color: #86BC25;
 }
@@ -1065,117 +1014,105 @@ body {
 }
 
 
-/* Inner Content */
+/* HEX CONTENT */
 .hex-inner {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    width: 100%;
-    height: 100%;
     background: #fff;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     transform: scale(0.96);
 }
 
+.info-icon i {
+    font-size: 2.5rem;
+    margin-bottom: 0;
+    transition: transform 0.3s ease;
+}
 
-/* HOVER EFFECTS: Hexagon Zoom & Highlight */
+.hex-step:nth-child(odd) .info-icon i {
+    color: #86BC25;
+}
+
+.hex-step:nth-child(even) .info-icon i {
+    color: #00A3A1;
+}
+
+.info-title {
+    display: none;
+}
+
+/* Hide Title inside Hex */
+
+
+/* REVEAL DETAILS SECTION (Popup) */
+.info-text-block {
+    position: absolute;
+    width: 250px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    z-index: 10;
+    pointer-events: none;
+    /* Let clicks pass initially */
+
+    /* Hiding State */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Positioning Details */
+.hex-step:nth-child(odd) .info-text-block {
+    top: 180px;
+    /* Below */
+}
+
+.hex-step:nth-child(even) .info-text-block {
+    bottom: 180px;
+    /* Above */
+}
+
+/* HOVER REVEAL LOGIC */
+.hex-step:hover .info-text-block {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
 .hex-step:hover .infographic-hex {
     transform: scale(1.1);
 }
 
-.hex-step:nth-child(odd):hover .infographic-hex {
-    background-color: #6aa321;
-    /* Darker Green border on hover */
-}
-
-.hex-step:nth-child(even):hover .infographic-hex {
-    background-color: #007a78;
-    /* Darker Teal border on hover */
-}
-
-
-/* ICONS */
-.info-icon i {
-    font-size: 2rem;
-    margin-bottom: 8px;
-    color: #333;
-    transition: transform 0.4s ease, color 0.3s ease;
-}
-
-.hex-step:nth-child(odd) .info-icon i {
-    color: #5c8a14;
-}
-
-.hex-step:nth-child(even) .info-icon i {
-    color: #007a78;
-}
-
-.hex-step:hover .info-icon i {
-    transform: rotateY(180deg);
-    /* Icon flipping effect */
-    color: #1a1a1a;
-}
-
-.info-title {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: #000;
-    text-transform: capitalize;
-    line-height: 1.2;
-    max-width: 90px;
-}
-
-/* TEXT CONTENT */
-.info-text-block {
-    text-align: left;
-    padding: 10px;
-    background: transparent;
-    box-shadow: none;
-    border: none;
-    max-width: 200px;
-    color: #000;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-}
-
-/* Hover: Subtle highlight on text block */
-.hex-step:hover .info-text-block {
-    background-color: rgba(0, 0, 0, 0.02);
-    /* Very subtle grey background */
-}
-
+/* Typography */
 .info-desc {
-    font-size: 0.85rem;
-    color: #222;
-    margin-bottom: 10px;
-    line-height: 1.4;
-    font-weight: 500;
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: 600;
 }
 
 .info-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    text-align: left;
+    padding-left: 10px;
 }
 
 .info-list li {
-    font-size: 0.75rem;
-    color: #555;
+    font-size: 0.8rem;
+    color: #666;
     margin-bottom: 4px;
-    padding-left: 10px;
-    position: relative;
-    line-height: 1.3;
 }
 
 .info-list li::before {
-    content: '•';
+    content: '• ';
     color: #86BC25;
-    position: absolute;
-    left: 0;
-    top: 0px;
-    font-weight: bold;
 }
 
 .hex-step:nth-child(even) .info-list li::before {
@@ -1183,56 +1120,46 @@ body {
 }
 
 
-/* Removing Extra Elements */
-.info-text-block::before {
-    display: none;
-}
-
-.hex-step::before {
-    display: none;
-}
-
-
 /* RESPONSIVE */
 @media (max-width: 1100px) {
     .hex-infographic-container {
-        flex-wrap: wrap;
-        justify-content: center;
-        padding-top: 20px;
-        gap: 30px;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
     }
 
     .hex-step {
-        flex: 0 0 45%;
-        margin-top: 0 !important;
-        flex-direction: row !important;
-        align-items: flex-start;
-        text-align: left;
-
-        /* Reset animations for mobile to avoid jank - REMOVED to allow animation */
-        /* opacity: 1 !important; */
-        /* transform: none !important; */
-        /* transition: none !important; */
-    }
-
-    .hex-step:nth-child(even) {
-        flex-direction: row !important;
+        flex-direction: row;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 !important;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px;
+        /* Show details by default on mobile */
     }
 
     .infographic-hex {
-        margin: 0 15px 0 0;
-        flex-shrink: 0;
+        margin: 0 20px 0 0;
         width: 100px;
         height: 115px;
+        flex-shrink: 0;
     }
 
+    .hex-step::before,
     .hex-step::after {
         display: none;
     }
-}
 
-@media (max-width: 600px) {
-    .hex-step {
-        flex: 0 0 100%;
+    .info-text-block {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        width: auto;
+        box-shadow: none;
+        padding: 0;
+        text-align: left;
+        pointer-events: auto;
     }
 }
