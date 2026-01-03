@@ -860,3 +860,233 @@ body {
     color: var(--color-primary);
 }
 
+
+/* ============================================
+   HEXAGONAL INFOGRAPHIC LAYOUT (Replica)
+   ============================================ */
+.hex-infographic-section {
+    padding: 80px 20px;
+    background-color: #f9f9f9; /* Light clean bg */
+    overflow-x: auto; /* Allow scroll on very small screens if needed */
+}
+
+.hex-infographic-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Stretch to fill height */
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 0; /* Connectors handle spacing */
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Individual Step Wrapper */
+.hex-step {
+    flex: 1;
+    min-width: 220px;
+    display: grid;
+    grid-template-rows: 1fr auto 1fr; /* Text - Hex - Text(Empty) */
+    align-items: center;
+    position: relative;
+}
+
+/* Connector Line (Horizontal) */
+.hex-step::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background: repeating-linear-gradient(to right, #ccc 0, #ccc 5px, transparent 5px, transparent 10px);
+    z-index: 0;
+    transform: translateY(-50%);
+}
+
+.hex-step:last-child::after {
+    display: none;
+}
+
+/* The Hexagon Shape */
+.infographic-hex {
+    grid-row: 2; /* Always in the middle row */
+    width: 140px;
+    height: 160px;
+    background: #fff;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    z-index: 2;
+    position: relative;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    /* Border simulation using filter/drop-shadow or internal border container */
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.1));
+}
+
+.infographic-hex:hover {
+    transform: scale(1.05);
+}
+
+/* Internal Border Container for Hex */
+.hex-inner {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Colored Borders */
+.hex-step:nth-child(odd) .infographic-hex::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--color-primary); /* Green */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    z-index: -1;
+    margin: -3px; /* Simulates border width */
+}
+
+.hex-step:nth-child(even) .infographic-hex::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #00A3A1; /* Teal */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    z-index: -1;
+    margin: -3px;
+}
+
+/* Icon & Title Inside Hex */
+.info-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    color: #333;
+}
+.info-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+/* Text Blocks */
+.info-text-block {
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #555;
+    position: relative;
+}
+
+/* Alternating Placement */
+/* Odd Items: Text TOP */
+.hex-step:nth-child(odd) .info-text-block {
+    grid-row: 1;
+    border-bottom: 2px dotted #ddd;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+/* Even Items: Text BOTTOM */
+.hex-step:nth-child(even) .info-text-block {
+    grid-row: 3;
+    border-top: 2px dotted #ddd;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+/* Vertical Dotted Line from Text to Hex */
+.info-text-block::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    background: repeating-linear-gradient(to bottom, #ccc 0, #ccc 5px, transparent 5px, transparent 10px);
+    height: 20px; /* Length of connector */
+}
+
+/* Connector specifics */
+.hex-step:nth-child(odd) .info-text-block::before {
+    bottom: -20px;
+}
+.hex-step:nth-child(even) .info-text-block::before {
+    top: -20px;
+}
+
+/* Content Styling */
+.info-desc {
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #222;
+}
+.info-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+.info-list li {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    position: relative;
+    padding-left: 12px;
+    line-height: 1.4;
+}
+.info-list li::before {
+    content: '';
+    color: var(--color-primary);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Responsive: Stack vertically on mobile */
+@media (max-width: 900px) {
+    .hex-infographic-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .hex-step {
+        display: flex; /* Row layout: Hex Left, Text Right */
+        flex-direction: row;
+        width: 100%;
+        margin-bottom: 40px;
+        min-width: auto;
+    }
+    .hex-step::after {
+        /* Vertical line connecting hexes */
+        width: 2px;
+        height: 100%;
+        top: 100%;
+        left: 70px; /* Center of hex width/2 */
+        transform: none;
+        background: repeating-linear-gradient(to bottom, #ccc 0, #ccc 5px, transparent 5px, transparent 10px);
+    }
+    
+    .infographic-hex {
+        flex-shrink: 0; /* Keep hex size */
+        margin: 0 20px 0 0;
+    }
+    
+    .info-text-block {
+        text-align: left;
+        padding: 0;
+        border: none !important;
+        margin: 0 !important;
+    }
+    
+    .info-text-block::before {
+        display: none; /* No vertical connectors needed in mobile row layout */
+    }
+}
+
