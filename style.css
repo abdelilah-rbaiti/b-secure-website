@@ -501,6 +501,7 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
 /* ============================================
    HEXAGONAL SERVICES FLOW (OVERRIDE)
    ============================================ */
@@ -537,7 +538,8 @@ body {
 .hex-item {
     position: relative;
     width: 200px;
-    height: 300px; /* Space for top/bottom text */
+    height: 300px;
+    /* Space for top/bottom text */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -548,7 +550,7 @@ body {
 
 /* Stagger every other item down */
 .hex-item.hex-down {
-    margin-top: 100px; 
+    margin-top: 100px;
 }
 
 /* The Hexagon Shape */
@@ -560,12 +562,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid var(--color-primary); /* Fallback border */
+    border: 2px solid var(--color-primary);
+    /* Fallback border */
     position: relative;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
-    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
 }
 
 /* Effect */
@@ -579,7 +582,7 @@ body {
     background: var(--color-primary);
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     z-index: -1;
-    transform: scale(1.03); 
+    transform: scale(1.03);
     opacity: 0.2;
     transition: opacity 0.3s;
 }
@@ -637,16 +640,16 @@ body {
     padding: 15px;
     border-radius: 8px;
     border: 1px solid #eee;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .hex-details-top {
-    bottom: 60%; 
+    bottom: 60%;
     transform: translateY(-10px);
 }
 
 .hex-details-bottom {
-    top: 60%; 
+    top: 60%;
     transform: translateY(10px);
 }
 
@@ -689,7 +692,7 @@ body {
 }
 
 .hex-item.hex-down:not(:last-child)::after {
-    top: 15%; 
+    top: 15%;
     transform: rotate(-30deg);
 }
 
@@ -704,7 +707,11 @@ body {
         flex-direction: column;
         gap: 40px;
     }
-    .hex-flow-line { display: none; }
+
+    .hex-flow-line {
+        display: none;
+    }
+
     .hex-item {
         width: 100%;
         height: auto;
@@ -714,14 +721,26 @@ body {
         margin: 0;
         align-items: center;
     }
-    .hex-item.hex-down { margin-top: 0; }
+
+    .hex-item.hex-down {
+        margin-top: 0;
+    }
+
     .hex-shape {
         width: 80px;
         height: 90px;
         flex-shrink: 0;
     }
-    .hex-icon { font-size: 1.5rem; margin-bottom: 5px; }
-    .hex-content h3 { font-size: 0.7rem; }
+
+    .hex-icon {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+    }
+
+    .hex-content h3 {
+        font-size: 0.7rem;
+    }
+
     .hex-details {
         position: static;
         opacity: 1;
@@ -733,7 +752,10 @@ body {
         background: transparent;
         pointer-events: auto;
     }
-    .hex-item::after { display: none; }
+
+    .hex-item::after {
+        display: none;
+    }
 }
 
 
@@ -750,7 +772,8 @@ body {
 }
 
 .premium-card {
-    background: #0f0f0f; /* Very Dark Grey */
+    background: #0f0f0f;
+    /* Very Dark Grey */
     border: 1px solid #1a1a1a;
     border-radius: 12px;
     position: relative;
@@ -770,7 +793,7 @@ body {
     padding: 35px;
     position: relative;
     z-index: 2;
-    background: linear-gradient(180deg, rgba(20,20,20,0) 0%, rgba(10,10,10,0.8) 100%);
+    background: linear-gradient(180deg, rgba(20, 20, 20, 0) 0%, rgba(10, 10, 10, 0.8) 100%);
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -822,7 +845,7 @@ body {
 .premium-list {
     list-style: none;
     margin-bottom: 30px;
-    flex-grow: 1; 
+    flex-grow: 1;
 }
 
 .premium-list li {
@@ -864,22 +887,25 @@ body {
 /* ============================================
    HEXAGONAL INFOGRAPHIC LAYOUT (Replica)
    ============================================ */
+/* ============================================
+   HEXAGONAL INFOGRAPHIC LAYOUT (Polished)
+   ============================================ */
 .hex-infographic-section {
-    padding: 80px 20px;
-    background-color: #f9f9f9; /* Light clean bg */
-    overflow-x: auto; /* Allow scroll on very small screens if needed */
+    padding: 100px 20px;
+    background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+    overflow-x: auto;
 }
 
 .hex-infographic-container {
     display: flex;
     justify-content: center;
-    align-items: stretch; /* Stretch to fill height */
+    align-items: stretch;
     max-width: 1400px;
     margin: 0 auto;
-    gap: 0; /* Connectors handle spacing */
+    gap: 0;
     position: relative;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 /* Individual Step Wrapper */
@@ -887,20 +913,21 @@ body {
     flex: 1;
     min-width: 220px;
     display: grid;
-    grid-template-rows: 1fr auto 1fr; /* Text - Hex - Text(Empty) */
+    grid-template-rows: 1fr auto 1fr;
     align-items: center;
     position: relative;
+    padding: 0 10px;
 }
 
-/* Connector Line (Horizontal) */
+/* Horizontal Connector Line */
 .hex-step::after {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     width: 100%;
-    height: 2px;
-    background: repeating-linear-gradient(to right, #ccc 0, #ccc 5px, transparent 5px, transparent 10px);
+    height: 3px;
+    background: repeating-linear-gradient(to right, #e0e0e0 0, #e0e0e0 6px, transparent 6px, transparent 12px);
     z-index: 0;
     transform: translateY(-50%);
 }
@@ -911,182 +938,200 @@ body {
 
 /* The Hexagon Shape */
 .infographic-hex {
-    grid-row: 2; /* Always in the middle row */
-    width: 140px;
-    height: 160px;
+    grid-row: 2;
+    width: 150px;
+    height: 170px;
     background: #fff;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
     z-index: 2;
     position: relative;
-    padding: 10px;
-    text-align: center;
-    transition: transform 0.3s ease;
-    /* Border simulation using filter/drop-shadow or internal border container */
-    filter: drop-shadow(0 0 5px rgba(0,0,0,0.1));
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.05));
 }
 
 .infographic-hex:hover {
-    transform: scale(1.05);
+    transform: scale(1.1) translateY(-5px);
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.1));
 }
 
-/* Internal Border Container for Hex */
+/* Inner Container */
 .hex-inner {
-    width: 100%;
-    height: 100%;
-    background: #fff;
+    width: 144px;
+    /* Slightly smaller for border effect */
+    height: 164px;
+    background: linear-gradient(135deg, #ffffff 0%, #f4f7f6 100%);
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
+    z-index: 2;
 }
 
-/* Colored Borders */
-.hex-step:nth-child(odd) .infographic-hex::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--color-primary); /* Green */
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    z-index: -1;
-    margin: -3px; /* Simulates border width */
+/* Colored Borders (Pseudo-element on wrapper) */
+.hex-step:nth-child(odd) .infographic-hex {
+    background: var(--color-primary);
+    /* Green Border */
 }
 
-.hex-step:nth-child(even) .infographic-hex::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: #00A3A1; /* Teal */
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    z-index: -1;
-    margin: -3px;
+.hex-step:nth-child(even) .infographic-hex {
+    background: #00A3A1;
+    /* Teal Border */
 }
 
-/* Icon & Title Inside Hex */
+/* Icons & text */
 .info-icon {
-    font-size: 2rem;
-    margin-bottom: 8px;
-    color: #333;
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
+
 .info-title {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #333;
-    line-height: 1.2;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #2c3e50;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0 10px;
 }
 
 /* Text Blocks */
 .info-text-block {
-    padding: 20px;
-    font-size: 0.9rem;
-    color: #555;
+    padding: 25px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
     position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease;
 }
 
-/* Alternating Placement */
-/* Odd Items: Text TOP */
+.hex-step:hover .info-text-block {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+/* Positioning */
 .hex-step:nth-child(odd) .info-text-block {
     grid-row: 1;
-    border-bottom: 2px dotted #ddd;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-}
-/* Even Items: Text BOTTOM */
-.hex-step:nth-child(even) .info-text-block {
-    grid-row: 3;
-    border-top: 2px dotted #ddd;
-    margin-top: 20px;
-    padding-top: 20px;
+    margin-bottom: 30px;
 }
 
-/* Vertical Dotted Line from Text to Hex */
+.hex-step:nth-child(even) .info-text-block {
+    grid-row: 3;
+    margin-top: 30px;
+}
+
+/* Vertical Connectors */
 .info-text-block::before {
     content: '';
     position: absolute;
     left: 50%;
     width: 2px;
     background: repeating-linear-gradient(to bottom, #ccc 0, #ccc 5px, transparent 5px, transparent 10px);
-    height: 20px; /* Length of connector */
+    height: 30px;
+    z-index: -1;
 }
 
-/* Connector specifics */
 .hex-step:nth-child(odd) .info-text-block::before {
-    bottom: -20px;
-}
-.hex-step:nth-child(even) .info-text-block::before {
-    top: -20px;
+    bottom: -30px;
 }
 
-/* Content Styling */
-.info-desc {
-    font-weight: 500;
-    margin-bottom: 10px;
-    color: #222;
+.hex-step:nth-child(even) .info-text-block::before {
+    top: -30px;
 }
+
+/* Content Typography */
+.info-desc {
+    font-weight: 700;
+    color: #333;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
 .info-list {
     list-style: none;
     padding: 0;
-    text-align: left;
-}
-.info-list li {
-    font-size: 0.8rem;
-    margin-bottom: 5px;
-    position: relative;
-    padding-left: 12px;
-    line-height: 1.4;
-}
-.info-list li::before {
-    content: '';
-    color: var(--color-primary);
-    position: absolute;
-    left: 0;
-    font-weight: bold;
 }
 
-/* Responsive: Stack vertically on mobile */
+.info-list li {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 8px;
+    padding-left: 15px;
+    position: relative;
+    line-height: 1.4;
+}
+
+.info-list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 6px;
+}
+
+.hex-step:nth-child(even) .info-list li::before {
+    background: #00A3A1;
+}
+
+/* Responsive */
 @media (max-width: 900px) {
     .hex-infographic-container {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
+        padding-left: 20px;
     }
+
     .hex-step {
-        display: flex; /* Row layout: Hex Left, Text Right */
-        flex-direction: row;
+        display: flex;
         width: 100%;
-        margin-bottom: 40px;
-        min-width: auto;
-    }
-    .hex-step::after {
-        /* Vertical line connecting hexes */
-        width: 2px;
-        height: 100%;
-        top: 100%;
-        left: 70px; /* Center of hex width/2 */
-        transform: none;
-        background: repeating-linear-gradient(to bottom, #ccc 0, #ccc 5px, transparent 5px, transparent 10px);
-    }
-    
-    .infographic-hex {
-        flex-shrink: 0; /* Keep hex size */
-        margin: 0 20px 0 0;
-    }
-    
-    .info-text-block {
-        text-align: left;
+        margin-bottom: 50px;
         padding: 0;
-        border: none !important;
-        margin: 0 !important;
     }
-    
+
+    /* Vertical Timeline Line */
+    .hex-infographic-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 95px;
+        /* Center of hex */
+        width: 3px;
+        background: repeating-linear-gradient(to bottom, #e0e0e0 0, #e0e0e0 6px, transparent 6px, transparent 12px);
+        z-index: 0;
+    }
+
+    .hex-step::after {
+        display: none;
+    }
+
+    /* Hide horizontal lines */
+
+    .infographic-hex {
+        flex-shrink: 0;
+        margin: 0 30px 0 0;
+    }
+
+    .info-text-block {
+        flex-grow: 1;
+        text-align: left;
+        margin: 0 !important;
+        /* Reset margin */
+        padding: 20px;
+    }
+
     .info-text-block::before {
-        display: none; /* No vertical connectors needed in mobile row layout */
+        display: none;
     }
 }
-
